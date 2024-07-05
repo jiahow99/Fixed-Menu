@@ -11,8 +11,6 @@ Nova.booting((app, store) => {
 
 		initFloatingAction()
 	}
-
-	window.addEventListener('popstate', () => console.log('url changed'))
 })
 
 function initStickySidebar() {
@@ -62,15 +60,17 @@ function initFloatingAction() {
 		const observer = new MutationObserver(function (mutations) {
 			mutations.forEach(function (mutation) {
 				let action_header = document.querySelector('div[resource]')
-				const wrapper = action_header.parentElement.parentElement.parentElement
-				
-				if (wrapper) {
-					if (wrapper.classList.contains('action-sticky')) return
 
+				if (action_header) {
+					const wrapper = action_header.parentElement.parentElement.parentElement
+					if (wrapper.classList.contains('action-sticky')) return
+	
+					// Add style
 					wrapper.style.position = 'sticky'
-					wrapper.style.top = '10px'
+					wrapper.style.top = '0'
 					wrapper.classList.add('action-sticky')
 
+					// Change bg color on scroll
 					window.addEventListener('scroll', () => changeBackground(wrapper))
 				} else {
 					console.log('No action <div> found.');
