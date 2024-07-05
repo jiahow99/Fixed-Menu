@@ -89,9 +89,10 @@ function isDetailPage() {
 }
 
 function changeBackground(wrapper) {
-	if (wrapper.getBoundingClientRect().bottom > 0 && wrapper.getBoundingClientRect().top < document.documentElement.clientHeight) {
-		wrapper.classList.add('bg-slate-500');
-	} else {
-		wrapper.classList.remove('bg-slate-500');
-	}
+    const rect = wrapper.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        wrapper.classList.add('bg-gray-700');
+    } else {
+        wrapper.classList.remove('bg-gray-700');
+    }
 }
