@@ -11,6 +11,8 @@ Nova.booting((app, store) => {
 
 		initFloatingAction()
 	}
+
+	window.addEventListener('popstate', () => console.log('url changed'))
 })
 
 function initStickySidebar() {
@@ -63,14 +65,13 @@ function initFloatingAction() {
 				const wrapper = action_header.parentElement.parentElement.parentElement
 				
 				if (wrapper) {
-					window.addEventListener('scroll', () => changeBackground(wrapper))
 					if (wrapper.classList.contains('action-sticky')) return
 
 					wrapper.style.position = 'sticky'
 					wrapper.style.top = '10px'
 					wrapper.classList.add('action-sticky')
 
-					const observer = new IntersectionObserver(callback, {threshold: 0});
+					window.addEventListener('scroll', () => changeBackground(wrapper))
 				} else {
 					console.log('No action <div> found.');
 				}
@@ -82,17 +83,13 @@ function initFloatingAction() {
 
 function isDetailPage() {
 	const url = window.location.href
-	const regex = /\/resources\/[^\/]+\/\d+$/
-	
-	console.log('1');
+	const regex = /\/resources\/[^\/]+\/\d+$/	
 	return regex.test(url)
 }
 
 function changeBackground(wrapper) {
-    const rect = wrapper.getBoundingClientRect();
-    if (rect.bottom > 0 && rect.top < window.innerHeight) {
-        wrapper.classList.add('bg-gray-700');
-    } else {
-        wrapper.classList.remove('bg-gray-700');
-    }
+	const rect = wrapper.getBoundingClientRect()
+	if (rect.bottom > 0 && rect.top < document.documentElement.clientHeight) {
+		wrapper.classList.add('bg-gray-800', 'py-4');
+	}
 }
