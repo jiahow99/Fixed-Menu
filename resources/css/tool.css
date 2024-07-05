@@ -21,7 +21,3 @@
 ::-webkit-scrollbar-track {
     background: transparent;
 }
-
-.action-sticky {
-    transition: all .5s ease-in-out;
-}
