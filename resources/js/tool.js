@@ -57,8 +57,6 @@ function initResponsiveTable() {
 function initFloatingAction() {
 	// Only make floating in details page
 	if (isDetailPage()) {
-		console.log('is detail')
-
 		const observer = new MutationObserver(function (mutations) {
 			mutations.forEach(function (mutation) {
 				let action_header = document.querySelector('div[resource]')
@@ -66,17 +64,19 @@ function initFloatingAction() {
 				
 				if (wrapper) {
 					if (wrapper.classList.contains('action-sticky')) return
+
 					wrapper.style.position = 'sticky'
 					wrapper.style.top = '10px'
 					wrapper.classList.add('action-sticky')
+
+					window.addEventListener('scroll', () => changeBackground(wrapper))
+				} else {
+					console.log('No action <div> found.');
 				}
 			})
 		})
-		observer.observe(document.body, { childList: true, subtree: true })
-		
-	} else {
-		console.log('not detail')
-	}
+		observer.observe(document.body, { childList: true, subtree: true })	
+	} 
 }
 
 function isDetailPage() {
@@ -85,4 +85,12 @@ function isDetailPage() {
 	
 	console.log('1');
 	return regex.test(url)
+}
+
+function changeBackground(wrapper) {
+	if (wrapper.getBoundingClientRect().bottom > 0 && wrapper.getBoundingClientRect().top < document.documentElement.clientHeight) {
+		wrapper.classList.add('bg-black/80');
+	} else {
+		wrapper.classList.remove('bg-black/80');
+	}
 }

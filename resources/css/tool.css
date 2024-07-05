@@ -23,6 +23,5 @@
 }
 
 .action-sticky {
-    background-color: #0000006b;
     transition: all .5s ease-in-out;
 }
