@@ -1,0 +1,25 @@
+.sidebar-menu {
+    position: fixed;
+    overflow-y: hidden;
+    transition: overflow-y 1s ease;
+}
+
+.sidebar-menu:hover {
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9a9a9a;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+

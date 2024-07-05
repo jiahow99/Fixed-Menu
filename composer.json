@@ -1,0 +1,20 @@
+{
+    "name": "mices/fixed-menu",
+    "description": "Package for Laravel Nova to fix sidebar when scrolling",
+    "autoload": {
+        "psr-4": {
+            "Mices\\FixedMenu\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jiahow99",
+            "email": "jia_how99@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
