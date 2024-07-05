@@ -1,3 +1,5 @@
+## Description
+
 Laravel nova package to fix sidebar when scroll, and make horizontal table scroll.
 
 ## Installation
