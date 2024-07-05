@@ -2,13 +2,13 @@ import Tool from './pages/Tool'
 
 Nova.booting((app, store) => {
 	Nova.inertia('FixedMenu', Tool)
-
+	
 	// Load
-	window.onload = () => {
+	window.addEventListener('load', () => {
 		console.log('Sticky sidebar loaded')
 		initStickySidebar()
 		initResponsiveTable()
-	}
+	})
 })
 
 function initStickySidebar() {
@@ -23,7 +23,6 @@ function initStickySidebar() {
 }
 
 function initResponsiveTable() {
-	// Nova using ajax to call table, so need observer
 	const observer = new MutationObserver(function (mutations) {
 		mutations.forEach(function (mutation) {
 			// Table height
