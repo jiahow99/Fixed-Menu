@@ -62,13 +62,13 @@ function initFloatingAction() {
 		const observer = new MutationObserver(function (mutations) {
 			mutations.forEach(function (mutation) {
 				let action_header = document.querySelector('div[resource]')
-				const wrapper = action_header.parentElement.parentElement.parentElement.parentElement
+				const wrapper = action_header.parentElement.parentElement.parentElement
 				
 				if (wrapper) {
-					if (wrapper.classList.contains('sticky-applied')) return
+					if (wrapper.classList.contains('action-sticky')) return
 					wrapper.style.position = 'sticky'
 					wrapper.style.top = '10px'
-					wrapper.classList.add('sticky-applied')
+					wrapper.classList.add('action-sticky')
 				}
 			})
 		})
