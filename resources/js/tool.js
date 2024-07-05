@@ -58,14 +58,21 @@ function initFloatingAction() {
 	// Only make floating in details page
 	if (isDetailPage()) {
 		console.log('is detail')
-		let action_header = document.querySelector('div[resource]')
-		console.log(action_header)
 
-		if (action_header) {
-			const wrapper = action_header.parentElement
-			wrapper.style.position = 'sticky'
-			wrapper.style.top = '10px'
-		}
+		const observer = new MutationObserver(function (mutations) {
+			mutations.forEach(function (mutation) {
+				let action_header = document.querySelector('div[resource]')
+				console.log(action_header)
+
+				if (action_header) {
+					const wrapper = action_header.parentElement
+					wrapper.style.position = 'sticky'
+					wrapper.style.top = '10px'
+				}
+			})
+		})
+		observer.observe(document.body, { childList: true, subtree: true })
+		
 	} else {
 		console.log('not detail')
 	}
