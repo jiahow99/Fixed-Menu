@@ -74,6 +74,7 @@ function initFloatingAction() {
 function isDetailPage() {
 	const url = window.location.href
 	const regex = /\/resources\/[^\/]+\/\d+$/
-
+	
+	console.log('1');
 	return regex.test(url)
 }
