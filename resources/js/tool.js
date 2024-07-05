@@ -63,13 +63,14 @@ function initFloatingAction() {
 				const wrapper = action_header.parentElement.parentElement.parentElement
 				
 				if (wrapper) {
+					window.addEventListener('scroll', () => changeBackground(wrapper))
 					if (wrapper.classList.contains('action-sticky')) return
 
 					wrapper.style.position = 'sticky'
 					wrapper.style.top = '10px'
 					wrapper.classList.add('action-sticky')
 
-					window.addEventListener('scroll', () => changeBackground(wrapper))
+					const observer = new IntersectionObserver(callback, {threshold: 0});
 				} else {
 					console.log('No action <div> found.');
 				}
@@ -89,8 +90,8 @@ function isDetailPage() {
 
 function changeBackground(wrapper) {
 	if (wrapper.getBoundingClientRect().bottom > 0 && wrapper.getBoundingClientRect().top < document.documentElement.clientHeight) {
-		wrapper.classList.add('bg-black/80');
+		wrapper.classList.add('bg-slate-500');
 	} else {
-		wrapper.classList.remove('bg-black/80');
+		wrapper.classList.remove('bg-slate-500');
 	}
 }
